@@ -23,5 +23,7 @@ This is a base container for [VSCode containerized development](https://code.vis
 3. Installed packages (Pypi)
    * Ansible
    * Ansible Navigator
+   * Ansible Lint
+   * yamllint
 4. Fish Shell as the default shell.
 5. Prints system info on connecting (purely a cosmetic choice).

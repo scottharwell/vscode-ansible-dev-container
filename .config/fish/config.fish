@@ -5,5 +5,3 @@ alias prettyjson="python -m json.tool | pygmentize -l javascript"
 function fish_greeting
     neofetch
 end
-
-cd ~/

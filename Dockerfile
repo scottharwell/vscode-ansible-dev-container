@@ -25,7 +25,7 @@ WORKDIR /home/${USERNAME}
 RUN runuser -l ${USERNAME} -c "mkdir -p /home/${USERNAME}/.local/bin"
 RUN runuser -l ${USERNAME} -c "set -U fish_user_paths /home/${USERNAME}/.local/bin"
 RUN runuser -l ${USERNAME} -c "python3 -m pip install --upgrade pip"
-RUN runuser -l ${USERNAME} -c "pip3 install ansible ansible-navigator ansible-lint"
+RUN runuser -l ${USERNAME} -c "pip3 install ansible ansible-navigator ansible-lint yamllint"
 
 # Create Fish Shell configs
 RUN runuser -l ${USERNAME} -c "mkdir -p /home/${USERNAME}/.config/fish"
