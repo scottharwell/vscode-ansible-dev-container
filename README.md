@@ -92,7 +92,7 @@ Then, in your `Dockerfile`, you can configure the container with other dependenc
 ```Dockerfile
 FROM quay.io/scottharwell/vscode-ansible:latest
 
-ARG AZURE_COLLECTION_VERSION="v1.10.0"
+ARG AZURE_COLLECTION_VERSION="v1.11.0"
 ARG CONTAINER_USER="vscode"
 
 # Ensure PIP is upgraded
