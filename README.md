@@ -4,31 +4,31 @@ This is a base container for [VSCode containerized development](https://code.vis
 
 1. Fedora base image.
 2. Installed packages (RPM) -- On top of the default Fedora packages
-   * python3-devel 
-   * python3-wheel 
-   * oniguruma-devel 
-   * gcc 
-   * make 
-   * git 
-   * fish 
-   * neofetch 
-   * wget 
-   * util-linux 
-   * util-linux-user 
-   * which 
-   * vim 
-   * powerline 
-   * powerline-fonts 
-   * vim-powerline
+   * `python3-devel`
+   * `python3-wheel`
+   * `oniguruma-devel`
+   * `gcc`
+   * `make`
+   * `git`
+   * `fish`
+   * `neofetch`
+   * `wget`
+   * `util-linux`
+   * `util-linux-user`
+   * `which`
+   * `vim`
+   * `powerline`
+   * `powerline-fonts`
+   * `vim-powerline`
 3. Installed packages (Pypi)
-   * Ansible
-   * Ansible Navigator
-   * Ansible Lint
-   * yamllint
+   * `ansible`
+   * `ansible-navigator`
+   * `ansible-lint`
+   * `yamllint`
 4. Fish Shell as the default shell.
 5. Prints system info on connecting (purely a cosmetic choice).
 
-# Usage
+## Usage
 
 This container can be directly used as a remote container for VSCode and Ansible development, but it can also be the base for other containers as well.
 
@@ -92,15 +92,12 @@ Then, in your `Dockerfile`, you can configure the container with other dependenc
 ```Dockerfile
 FROM quay.io/scottharwell/vscode-ansible:latest
 
-ARG AZURE_COLLECTION_VERSION="v1.11.0"
 ARG CONTAINER_USER="vscode"
 
 # Ensure PIP is upgraded
 RUN runuser -l ${CONTAINER_USER} -c "pip3 install pip --upgrade"
 
-# Download Azure Collection Depedendencies - Note AZ CLI and collection have conflicting dependencies and cannot be installed together.
-RUN runuser -l ${CONTAINER_USER} -c "git clone https://github.com/ansible-collections/azure.git /tmp/azure"
-RUN runuser -l ${CONTAINER_USER} -c "cd /tmp/azure; git checkout ${AZURE_COLLECTION_VERSION}"
-RUN runuser -l ${CONTAINER_USER} -c "pip3 install -r /tmp/azure/requirements-azure.txt"
+# Download Azure Collection Dependencies
 RUN runuser -l ${CONTAINER_USER} -c "ansible-galaxy collection install azure.azcollection"
+RUN runuser -l ${CONTAINER_USER} -c "pip3 install -r ~/.ansible/collections/ansible_collections/azure/azcollection/requirements-azure.txt"
 ```
